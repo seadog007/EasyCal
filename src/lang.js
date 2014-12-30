@@ -1,6 +1,6 @@
 var mtdict = {
-  tw: { "cal_name": "日曆名稱", "cal_timezone": "此日曆時區", "msg_time": "以下已轉換為本地時間", "event_list": "事件列表", "table_start_time": "開始時間", "table_end_time": "結束時間", "table_duration": "持續", "table_left": "距離該活動剩下", "table_summary": "摘要", "table_action": "動作"},
-  us: { "cal_name": "Calendar Name", "cal_timezone": "Timezone of Calendar", "msg_time": "不會翻", "event_list": "Event List", "table_start_time": "Start Time", "table_end_time": "End Time", "table_duration": "Duration", "table_left": "Left", "table_summary": "Summary", "table_action": "Action"}
+  tw: { "cal_name": "日曆名稱", "cal_timezone": "此日曆時區", "msg_time": "以下已轉換為本地時間", "event_list": "事件列表", "table_start_time": "開始時間", "table_end_time": "結束時間", "table_duration": "持續", "table_left": "距離該活動剩下", "table_summary": "摘要", "table_action": "動作", "new_event": "新增事件"},
+  us: { "cal_name": "Calendar Name", "cal_timezone": "Timezone of Calendar", "msg_time": "The following date time has been converted to your local timezone.", "event_list": "Event List", "table_start_time": "Start Time", "table_end_time": "End Time", "table_duration": "Duration", "table_left": "Left", "table_summary": "Summary", "table_action": "Action", "new_event": "Add a new event"}
 };
 
 var lang = 'tw';
