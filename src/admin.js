@@ -16,12 +16,17 @@
 
   function handleAuthResult(authResult) {
     var authorizeButton = document.getElementById('authorize-button');
+    var new_event = document.getElementById('new_event')
     if (authResult && !authResult.error) {
       authorizeButton.style.visibility = 'hidden';
+      new_event.style.visibility = ''
+      $('#auth-dialog').modal('hide');
       makeApiCall();
     } else {
       authorizeButton.style.visibility = '';
       authorizeButton.onclick = handleAuthClick;
+      new_event.style.visibility = 'hidden'
+      $('#auth-dialog').modal('show');
       }
   }
 
