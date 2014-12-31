@@ -15,17 +15,36 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Authorize</h4>
+        <h4 class="modal-title" data-lang="auth-diglog-title" id="myModalLabel">Authorize</h4>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" data-lang="auth-diglog-body">
         You need to sign in to edit the calendar
       </div>
       <div class="modal-footer">
-        <button id="authorize-button" class="btn btn-success" style="visibility: hidden"><span class="glyphicon glyphicon-lock"></span>　Authorize</button>
+        <button id="authorize-button" class="btn btn-success" style="visibility: hidden"><span class="glyphicon glyphicon-lock"></span>　<span data-lang="auth-diglog-button">Authorize</span></button>
       </div>
     </div>
   </div>
 </div>
+
+
+<div class="modal fade" id="new_event-dialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add a new event</h4>
+      </div>
+      <div class="modal-body">
+
+      </div>
+      <div class="modal-footer">
+        <button id="add-button" class="btn btn-success" style="visibility: hidden">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+
   <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8 col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-lg-offset-2">
   <h3></h3><button class="btn btn-info" style="visibility: hidden">Space lol</button>
   <h3></h3><button class="btn btn-info" style="visibility: hidden">Space lol</button>
