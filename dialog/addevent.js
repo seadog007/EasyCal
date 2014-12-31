@@ -7,11 +7,21 @@ var addevent = '\
 <h4 class="modal-title" id="myModalLabel" data-lang="new_event-dialog-title">新增事件</h4>\
 </div>\
 <div class="modal-body">\
-<form id="new_event-form" class="form-horizontal" action="add_new_event()" data-toggle="validator">\
+<form id="new_event-form" class="form-horizontal" action="" data-toggle="validator">\
 <div class="form-group">\
 <label class="col-lg-2 control-label" for="ned-summary" data-lang="new_event-dialog-summary">摘要</label>\
 <div class="col-lg-10">\
 <input class="form-control" type="text" id="ned-summary" placeholder="請輸入摘要" required>\
+</div>\
+</div>\
+<div class="form-group">\
+<label class="col-lg-2 control-label" data-lang="new_event-dialog-allday">整天</label>\
+<div class="col-lg-10">\
+<div class="checkbox">\
+<label>\
+<input type="checkbox" id="ned-fullday"><span data-lang="new_event-dialog-allday-checkbox">是</span></input>\
+</label>\
+</div>\
 </div>\
 </div>\
 <div class="form-group">\
@@ -20,7 +30,7 @@ var addevent = '\
 <input type="date" class="form-control" id="ned-SD" placeholder="Start Date" required>\
 </div>\
 <div class="col-lg-5">\
-<input type="time" class="form-control" id="ned-ST" placeholder="Start Time">\
+<input type="time" class="form-control" id="ned-ST" placeholder="Start Time"  required>\
 </div>\
 </div>\
 <div class="form-group">\
@@ -29,7 +39,7 @@ var addevent = '\
 <input type="date" class="form-control" id="ned-ED" placeholder="End Date" required>\
 </div>\
 <div class="col-lg-5">\
-<input type="time" class="form-control" id="ned-ET" placeholder="End Time">\
+<input type="time" class="form-control" id="ned-ET" placeholder="End Time"  required>\
 </div>\
 </div>\
 <div class="form-group">\
@@ -41,8 +51,8 @@ var addevent = '\
 </form>\
 </div>\
 <div class="modal-footer">\
-<button class="btn btn-default class" data-dismiss="modal" data-lang="new_event-dialog-cancel">取消</button>\
-<button class="btn btn-success" data-lang="new_event-dialog-add" type="submit">新增</button>\
+<button id="ned-cancel" class="btn btn-default class" data-dismiss="modal" data-lang="new_event-dialog-cancel">取消</button>\
+<button id="ned-submit" class="btn btn-success" data-lang="new_event-dialog-add" onclick="add_new_event()">新增</button>\
 </div>\
 </div>\
 </div>\

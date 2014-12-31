@@ -17,12 +17,12 @@
       <h5><span data-lang="cal_timezone">此日曆時區</span>：<span id="timezone"></span></h5>
       <p data-lang="msg_time">以下已轉換為本地時間</p>
       <hr>
-      <button class="btn btn-default" style="float: right; visibility: hidden;" id="new_event" data-toggle="modal" data-target="#new_event-dialog"><span class="glyphicon glyphicon-plus"></span><span data-lang="new_event">新增事件</span>
+      <button class="btn btn-default" style="float: right; visibility: hidden;" id="new_event" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#new_event-dialog"><span class="glyphicon glyphicon-plus"></span><span data-lang="new_event">新增事件</span>
       </button>
       <h3><span data-lang="event_list">事件列表</span>：</h3>
       <div id="events" class="table-responsive">
         <table class="table table-striped">
-          <thead>
+          <thead id="caltable_head">
             <tr>
               <td data-lang="table_start_time">開始時間</td>
               <td data-lang="table_end_time">結束時間</td>
@@ -38,19 +38,22 @@
       </div>
 
     </div>
+
     <script src="src/config.js"></script>
     <script src="src/jquery.min.js"></script>
     <script src="src/bootstrap.min.js"></script>
-    <script src="src/validator.js"></script>
-    <script src="src/admin.js"></script>
-    <script src="src/diffTime.js"></script>
-    <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
     <script src="src/moment-with-locales.min.js"></script>
     <script src="src/moment-timezone-with-data.min.js"></script>
-    <script src="src/lang.js"></script>
+    <script src="src/validator.js"></script>
 
     <script src="dialog/auth.js"></script>
     <script src="dialog/addevent.js"></script>
+
+    <script src="src/admin.js"></script>
+    <script src="src/diffTime.js"></script>
+    <script src="src/lang.js"></script>
+
+    <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
 
     <script src="navbar.js"></script>
     <script src="footer.js"></script>
