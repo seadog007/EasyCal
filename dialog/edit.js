@@ -12,7 +12,7 @@ var edit = '\
 <div class="form-group">\
 <label class="col-lg-2 control-label" for="editd-summary" data-lang="edit-dialog-summary">摘要</label>\
 <div class="col-lg-10">\
-<input class="form-control" type="text" id="editd-summary" placeholder="請輸入摘要" required>\
+<input class="form-control" type="text" data-lang="edit-dialog-summary-self" id="editd-summary" placeholder="請輸入摘要" required>\
 </div>\
 </div>\
 <div class="form-group">\
@@ -46,7 +46,7 @@ var edit = '\
 <div class="form-group">\
 <label class="col-lg-2 control-label" for="editd-detail" data-lang="edit-dialog-detail">詳細內容</label>\
 <div class="col-lg-10">\
-<textarea class="form-control" id="editd-detail" placeholder="此事件詳細描述" rows="7"></textarea>\
+<textarea class="form-control" id="editd-detail" data-lang="edit-dialog-detail-self" placeholder="此事件詳細描述" rows="7"></textarea>\
 </div>\
 </div>\
 </form>\

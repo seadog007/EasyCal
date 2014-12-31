@@ -12,7 +12,7 @@ var addevent = '\
 <div class="form-group">\
 <label class="col-lg-2 control-label" for="ned-summary" data-lang="new_event-dialog-summary">摘要</label>\
 <div class="col-lg-10">\
-<input class="form-control" type="text" id="ned-summary" placeholder="請輸入摘要" required>\
+<input class="form-control" type="text" data-lang="new_event-dialog-summary-self" id="ned-summary" placeholder="請輸入摘要" required>\
 </div>\
 </div>\
 <div class="form-group">\
@@ -46,7 +46,7 @@ var addevent = '\
 <div class="form-group">\
 <label class="col-lg-2 control-label" for="ned-detail" data-lang="new_event-dialog-detail">詳細內容</label>\
 <div class="col-lg-10">\
-<textarea class="form-control" id="ned-detail" placeholder="此事件詳細描述" rows="7"></textarea>\
+<textarea class="form-control" data-lang="new_event-dialog-detail-self" id="ned-detail" placeholder="此事件詳細描述" rows="7"></textarea>\
 </div>\
 </div>\
 </form>\

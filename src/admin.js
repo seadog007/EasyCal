@@ -248,8 +248,8 @@ function real_edit_event(id){
     var end_datetime = ""
     var needretrun = 0
     if (!allday){
-        start_datetime = start_date + "T" + start_time + ":00" + moment().tz(cal_timezone).format('Z')
-        end_datetime = end_date + "T" + end_time + ":00" + moment().tz(cal_timezone).format('Z')
+        start_datetime = start_date + "T" + (start_time.split(':').length == 2 ? start_time + ":00" : start_time) + moment().tz(cal_timezone).format('Z')
+        end_datetime = end_date + "T" + (end_time.split(':').length == 2 ? end_time + ":00" : end_time) + moment().tz(cal_timezone).format('Z')
         if (diffTime(start_datetime,end_datetime)=="Over"){
             needretrun = 1
         }
