@@ -14,7 +14,14 @@ var mtdict = {
       "table_start_time": "開始時間",
       "table_end_time": "結束時間",
       "table_duration": "持續",
-      "table_left": "距離該活動剩下"
+      "table_left": "距離該活動剩下",
+      "new_event-dialog-title": "新增事件",
+      "new_event-dialog-summary": "摘要",
+      "new_event-dialog-start-time": "開始時間",
+      "new_event-dialog-end-time": "結束時間",
+      "new_event-dialog-detail": "詳細內容",
+      "new_event-dialog-cancel": "取消",
+      "new_event-dialog-add": "新增事件"
     },
   "en-US":
     {
@@ -32,7 +39,13 @@ var mtdict = {
       "table_end_time": "End Time",
       "table_duration": "Duration",
       "table_left": "Left",
-
+      "new_event-dialog-title": "Add a new event",
+      "new_event-dialog-summary": "Summary",
+      "new_event-dialog-start-time": "Start Time",
+      "new_event-dialog-end-time": "End Time",
+      "new_event-dialog-detail": "Detail",
+      "new_event-dialog-cancel": "Cancel",
+      "new_event-dialog-add": "Add"
     }
 };
 

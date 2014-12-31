@@ -34,7 +34,7 @@
   function makeApiCall() {
       gapi.client.load('calendar', 'v3', function () {
         var request = gapi.client.calendar.events.list({
-          "calendarId": "k3hj32d7uemqf7fke49rfi40t4@group.calendar.google.com",
+          "calendarId": calendarId,
           "orderBy": "startTime",
           "singleEvents": "true",
           "timeZone": "UTC"
