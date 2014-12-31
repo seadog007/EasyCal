@@ -96,6 +96,17 @@
   }
   //=============執行 Api 呼叫=============
 
+function add_new_event(){
+    var summary = $('#ned-summary').val()
+    var start_date = $('#ned-SD').val()
+    var start_time = $('#ned-ST').val()
+    var end_date = $('#ned-ED').val()
+    var end_time = $('#ned-ET').val()
+    var detail = $('#ned-detail').val()
+    console.log('Event')
+
+}
+
   $('#new_event-dialog').on('shown.bs.modal', function () {
       $('#new_event-form')[0].reset()
       $('#ned-summary').focus()

@@ -7,17 +7,17 @@ var addevent = '\
 <h4 class="modal-title" id="myModalLabel" data-lang="new_event-dialog-title">新增事件</h4>\
 </div>\
 <div class="modal-body">\
-<form id="new_event-form" class="form-horizontal">\
+<form id="new_event-form" class="form-horizontal" action="add_new_event()" data-toggle="validator">\
 <div class="form-group">\
 <label class="col-lg-2 control-label" for="ned-summary" data-lang="new_event-dialog-summary">摘要</label>\
 <div class="col-lg-10">\
-<input class="form-control" type="text" id="ned-summary" placeholder="請輸入摘要">\
+<input class="form-control" type="text" id="ned-summary" placeholder="請輸入摘要" required>\
 </div>\
 </div>\
 <div class="form-group">\
 <label class="col-lg-2 control-label" for="ned-SD" data-lang="new_event-dialog-start-time">開始時間</label>\
 <div class="col-lg-5">\
-<input type="date" class="form-control" id="ned-SD" placeholder="Start Date">\
+<input type="date" class="form-control" id="ned-SD" placeholder="Start Date" required>\
 </div>\
 <div class="col-lg-5">\
 <input type="time" class="form-control" id="ned-ST" placeholder="Start Time">\
@@ -26,7 +26,7 @@ var addevent = '\
 <div class="form-group">\
 <label class="col-lg-2 control-label" for="ned-ED" data-lang="new_event-dialog-end-time">結束時間</label>\
 <div class="col-lg-5">\
-<input type="date" class="form-control" id="ned-ED" placeholder="End Date">\
+<input type="date" class="form-control" id="ned-ED" placeholder="End Date" required>\
 </div>\
 <div class="col-lg-5">\
 <input type="time" class="form-control" id="ned-ET" placeholder="End Time">\
@@ -42,7 +42,7 @@ var addevent = '\
 </div>\
 <div class="modal-footer">\
 <button class="btn btn-default class" data-dismiss="modal" data-lang="new_event-dialog-cancel">取消</button>\
-<button class="btn btn-success" data-lang="new_event-dialog-add">新增</button>\
+<button class="btn btn-success" data-lang="new_event-dialog-add" type="submit">新增</button>\
 </div>\
 </div>\
 </div>\
