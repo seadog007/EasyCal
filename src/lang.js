@@ -1,5 +1,5 @@
 var mtdict = {
-  tw:
+  "zh-TW":
     {
       "auth-diglog-button": "驗證",
       "auth-diglog-body": "你必須要先驗證Google帳戶才能編輯這個行事曆",
@@ -16,7 +16,7 @@ var mtdict = {
       "table_duration": "持續",
       "table_left": "距離該活動剩下"
     },
-  us:
+  "en-US":
     {
       "auth-diglog-button": "Authorize",
       "auth-diglog-body": "You need to sign in to edit the calendar",
@@ -36,8 +36,11 @@ var mtdict = {
     }
 };
 
-var lang = 'tw';
-var dict = mtdict[lang];
+var lang = window.navigator.language;
+if (mtdict[lang] == undefined){
+    lang = 'en-US';
+}
+switchLang(lang)
 
 function mt(e) {
   var v = dict[e];
@@ -57,10 +60,4 @@ function switchLang(pLang) {
     });
 }
 
-function switchPanel(name) {
-  $(".panel" ).css( "display", "none" );
-  $("#panel"+name).css("display", "block");
-  $(".tab" ).removeClass("active");
-  $("#tab"+name).addClass("active");
-}
 
