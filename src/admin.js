@@ -96,4 +96,7 @@
     }
     //=============執行 Api 呼叫=============
 
-
+$('#new_event-dialog').on('shown.bs.modal', function () {
+    $('#new_event-form')[0].reset()
+    $('#ned-summary').focus()
+  })
