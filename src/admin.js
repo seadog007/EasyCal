@@ -64,21 +64,26 @@ function makeApiCall() {
             cal_timezone = resp.timeZone
 
             var cal_out = ""
-            var allday = "0"
             for (var i = resp.items.length - 1; i >= 0; i--) {
 
+                var allday = "0"
                 if (resp.items[i].start.date) {
                     allday = "1"
+
+                    var sto = resp.items[i].start.date
                     var st = new Date(resp.items[i].start.date + "T00:00:00" + moment().tz(resp.timeZone).format('Z'));
                     var starttime = st.getFullYear() + "-" + (st.getMonth() + 1) + "-" + st.getDate() + " " + st.getHours() + ":" + st.getMinutes()
+                    var eto = resp.items[i].end.date
                     var et = new Date(resp.items[i].end.date + "T00:00:00" + moment().tz(resp.timeZone).format('Z'));
                     var endtime = et.getFullYear() + "-" + (et.getMonth() + 1) + "-" + et.getDate() + " " + et.getHours() + ":" + et.getMinutes()
 
 
                 } else {
 
+                    var sto = resp.items[i].start.dateTime
                     var st = new Date(resp.items[i].start.dateTime);
                     var starttime = st.getFullYear() + "-" + (st.getMonth() + 1) + "-" + st.getDate() + " " + st.getHours() + ":" + st.getMinutes()
+                    var eto = resp.items[i].end.dateTime
                     var et = new Date(resp.items[i].end.dateTime);
                     var endtime = et.getFullYear() + "-" + (et.getMonth() + 1) + "-" + et.getDate() + " " + et.getHours() + ":" + et.getMinutes()
 
@@ -88,7 +93,9 @@ function makeApiCall() {
                 cal_out = cal_out + "<td>" + resp.items[i].description + "</td>"
                 cal_out = cal_out + "<td>" + allday + "</td>"
                 cal_out = cal_out + "<td>" + starttime + "</td>"
+                cal_out = cal_out + "<td>" + sto + "</td>"
                 cal_out = cal_out + "<td>" + endtime + "</td>"
+                cal_out = cal_out + "<td>" + eto + "</td>"
                 cal_out = cal_out + "<td>" + diffTime(st, et) + "</td>"
                 cal_out = cal_out + "<td>" + diffTime(new Date(), st) + "</td>"
                 cal_out = cal_out + "<td>" + resp.items[i].summary + "</td>"
@@ -100,6 +107,9 @@ function makeApiCall() {
             .append(cal_out)
             $('#caltable tr td:nth-child(1)').css('display','none');
             $('#caltable tr td:nth-child(2)').css('display','none');
+            $('#caltable tr td:nth-child(3)').css('display','none');
+            $('#caltable tr td:nth-child(5)').css('display','none');
+            $('#caltable tr td:nth-child(7)').css('display','none');
         });
     });
 }
@@ -109,7 +119,7 @@ function add_new_event(){
     $('#ned-cancel')[0].disabled="disabled"
     $('#ned-submit')[0].disabled="disabled"
     var summary = $('#ned-summary').val()
-    var allday = $("#ned-fullday")[0].checked
+    var allday = $("#ned-allday")[0].checked
     var start_date = $('#ned-SD').val()
     var start_time = $('#ned-ST').val()
     var end_date = $('#ned-ED').val()
@@ -193,14 +203,31 @@ function add_new_event(){
 
 
 function edit_event(row){
-    var eventid = $('#caltable tr td:nth-child(1)')[(row - 1)].innerText
-    var detail = $('#caltable tr td:nth-child(2)')[(row - 1)].innerText
-    var allday = $('#caltable tr td:nth-child(3)')[(row - 1)].innerText
-    var start_datetime = $('#caltable tr td:nth-child(4)')[(row - 1)].innerText
-    var end_datetime = $('#casltable tr td:nth-child(5)')[(row - 1)].innerText
-    var summary = $('#casltable tr td:nth-child(8)')[(row - 1)].innerText
-    // It's dialog timeXD
-    //update_table()
+
+    var eventid = $('#caltable tr td:nth-child(1)')[(row - 1)].innerHTML
+    var detail = $('#caltable tr td:nth-child(2)')[(row - 1)].innerHTML.toString()
+    var allday = Number($('#caltable tr td:nth-child(3)')[(row - 1)].innerHTML)
+    var start_datetime = $('#caltable tr td:nth-child(5)')[(row - 1)].innerHTML
+    var end_datetime = $('#caltable tr td:nth-child(7)')[(row - 1)].innerHTML
+    var summary = $('#caltable tr td:nth-child(10)')[(row - 1)].innerHTML
+    start_datetime_as_date = new Date(start_datetime)
+    end_datetime_as_date = new Date(end_datetime)
+    $('#editd-summary').text(summary)
+    $('#editd-allday')[0].checked = allday
+    $('#editd-SD')[0].value = moment(start_datetime_as_date).format('YYYY-MM-DD');
+    $('#editd-ED')[0].value = moment(end_datetime_as_date).format('YYYY-MM-DD');
+    if (allday){
+        $('#editd-ST')[0].style.visibility = "hidden";
+        $('#editd-ET')[0].style.visibility = "hidden";
+    }else{
+        $('#editd-ST')[0].value = moment(start_datetime_as_date).format('hh:mm:ss');
+        $('#editd-ET')[0].value = moment(end_datetime_as_date).format('hh:mm:ss');
+        $('#editd-ST')[0].style.visibility = "";
+        $('#editd-ET')[0].style.visibility = "";
+    }
+    $('#editd-detail')[0].value = detail
+
+    $('#edit-dialog').modal('show')
 }
 
 function del_event(id){
@@ -242,3 +269,14 @@ $('#ned-fullday').click(function() {
         $('#ned-ET')[0].style.visibility="";
     }
 })
+
+$('#editd-allday').click(function() {
+    if ($("#editd-allday")[0].checked){
+        $('#editd-ST')[0].style.visibility="hidden";
+        $('#editd-ET')[0].style.visibility="hidden";
+    }else{
+        $('#editd-ST')[0].style.visibility="";
+        $('#editd-ET')[0].style.visibility="";
+    }
+})
+

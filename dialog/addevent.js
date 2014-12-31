@@ -20,7 +20,7 @@ var addevent = '\
 <div class="col-lg-10">\
 <div class="checkbox">\
 <label>\
-<input type="checkbox" id="ned-fullday"><span data-lang="new_event-dialog-allday-checkbox">是</span></input>\
+<input type="checkbox" id="ned-allday"><span data-lang="new_event-dialog-allday-checkbox">是</span></input>\
 </label>\
 </div>\
 </div>\
@@ -31,13 +31,13 @@ var addevent = '\
 <input type="date" class="form-control" id="ned-SD" max="9999-12-31" placeholder="Start Date" required>\
 </div>\
 <div class="col-lg-5">\
-<input type="time" class="form-control" id="ned-ST" max="9999-12-31" placeholder="Start Time"  required>\
+<input type="time" class="form-control" id="ned-ST" placeholder="Start Time"  required>\
 </div>\
 </div>\
 <div class="form-group">\
 <label class="col-lg-2 control-label" for="ned-ED" data-lang="new_event-dialog-end-time">結束時間</label>\
 <div class="col-lg-5">\
-<input type="date" class="form-control" id="ned-ED" placeholder="End Date" required>\
+<input type="date" class="form-control" id="ned-ED" max="9999-12-31" placeholder="End Date" required>\
 </div>\
 <div class="col-lg-5">\
 <input type="time" class="form-control" id="ned-ET" placeholder="End Time"  required>\
