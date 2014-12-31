@@ -8,6 +8,7 @@ var addevent = '\
 </div>\
 <div class="modal-body">\
 <form id="new_event-form" class="form-horizontal" action="" data-toggle="validator">\
+<div class="well well-sm"><span data-lang="new_event-dialog-time-msg">以下時間使用該日曆時區</span></div>\
 <div class="form-group">\
 <label class="col-lg-2 control-label" for="ned-summary" data-lang="new_event-dialog-summary">摘要</label>\
 <div class="col-lg-10">\

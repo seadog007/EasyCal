@@ -111,8 +111,16 @@ function add_new_event(){
     var end_date = $('#ned-ED').val()
     var end_time = $('#ned-ET').val()
     var detail = $('#ned-detail').val()
+    var start_datetime = start_date + "T" + start_time + ":00Z"
+    var end_datetime = end_date + "T" + end_time + ":00Z"
     var needretrun = 0
-
+    if (allday){
+        start_datetime = start_date + "T" + start_time + ":00Z"
+        end_datetime = end_date + "T" + end_time + ":00Z"
+        if (diffTime(start_datetime,end_datetime)=="Over"){
+            needretrun = 1
+        }
+    }
     if (summary==""){
         needretrun = 1
     }
@@ -128,16 +136,56 @@ function add_new_event(){
     if (!allday && end_time==""){
         needretrun = 1
     }
+    if (diffTime(start_date,end_date)=="Over"){
+        needretrun = 1
+    }
+
 
     if (needretrun){
+
         $('#ned-cancel')[0].disabled=""
         $('#ned-submit')[0].disabled=""
         return false
+
     }else{
 
+        if (allday){
+            var req_body = {
+                'start': {
+                    'date': start_date
+                },
+                'end': {
+                    'date': end_date
+                },
+                'summary': summary,
+                'description': detail
+            }
+        }else{
+            var req_body = {
+                'start': {
+                    'dateTime': start_datetime
+                },
+                'end': {
+                    'dateTime': end_datetime
+                },
+                'summary': summary,
+                'description': detail
+            }
+        }
+
+        gapi.client.load('calendar', 'v3', function () {
+            var request = gapi.client.calendar.events.insert({
+                "calendarId": calendarId,
+                'resource': req_body
+            });
+            request.execute(function (resp) {
+                console.log(resp)
+            });
+        });
     }
 
 }
+
 
 function edit_event(row){
     console.log(row)
