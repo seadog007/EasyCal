@@ -55,7 +55,7 @@ var mtdict = {
       "cal_name": "Calendar Name",
       "cal_timezone": "Timezone of Calendar",
       "msg_time": "The following date time has been converted to your local timezone.",
-      "event_list": "Event Lisjt",
+      "event_list": "Event List",
       "table_start_time": "Start Time",
       "table_end_time": "End Time",
       "table_duration": "Duration",
