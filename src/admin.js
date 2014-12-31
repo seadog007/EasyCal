@@ -64,9 +64,11 @@ function makeApiCall() {
             cal_timezone = resp.timeZone
 
             var cal_out = ""
+            var allday = "0"
             for (var i = resp.items.length - 1; i >= 0; i--) {
 
                 if (resp.items[i].start.date) {
+                    allday = "1"
                     var st = new Date(resp.items[i].start.date + "T00:00:00" + moment().tz(resp.timeZone).format('Z'));
                     var starttime = st.getFullYear() + "-" + (st.getMonth() + 1) + "-" + st.getDate() + " " + st.getHours() + ":" + st.getMinutes()
                     var et = new Date(resp.items[i].end.date + "T00:00:00" + moment().tz(resp.timeZone).format('Z'));
@@ -83,13 +85,14 @@ function makeApiCall() {
                 }
                 cal_out = cal_out + "<tr>"
                 cal_out = cal_out + "<td>" + resp.items[i].id + "</td>"
-                cal_out = cal_out + "<td>" + resp.items[i].htmlLink + "</td>"
+                cal_out = cal_out + "<td>" + resp.items[i].description + "</td>"
+                cal_out = cal_out + "<td>" + allday + "</td>"
                 cal_out = cal_out + "<td>" + starttime + "</td>"
                 cal_out = cal_out + "<td>" + endtime + "</td>"
                 cal_out = cal_out + "<td>" + diffTime(st, et) + "</td>"
                 cal_out = cal_out + "<td>" + diffTime(new Date(), st) + "</td>"
                 cal_out = cal_out + "<td>" + resp.items[i].summary + "</td>"
-                cal_out = cal_out + "<td>" + '<a onclick="edit_event(' + (resp.items.length - i) + ')"><span class="glyphicon glyphicon-pencil"></span></a>' + "　" + '<a onclick="del_event(' + (resp.items.length - i) + ')"><span class="glyphicon glyphicon-trash"></span></a>' + "</td>"
+                cal_out = cal_out + "<td>" + '<a onclick="edit_event(' + (resp.items.length - i) + ')"><span class="glyphicon glyphicon-pencil"></span></a>' + "　" + '<a onclick="del_event(\'' + resp.items[i].id + '\')"><span class="glyphicon glyphicon-trash"></span></a>' + "</td>"
                 cal_out = cal_out + "</tr>"
 
             }
@@ -190,13 +193,32 @@ function add_new_event(){
 
 
 function edit_event(row){
-    console.log(row)
-    update_table()
+    var eventid = $('#caltable tr td:nth-child(1)')[(row - 1)].innerText
+    var detail = $('#caltable tr td:nth-child(2)')[(row - 1)].innerText
+    var allday = $('#caltable tr td:nth-child(3)')[(row - 1)].innerText
+    var start_datetime = $('#caltable tr td:nth-child(4)')[(row - 1)].innerText
+    var end_datetime = $('#casltable tr td:nth-child(5)')[(row - 1)].innerText
+    var summary = $('#casltable tr td:nth-child(8)')[(row - 1)].innerText
+    // It's dialog timeXD
+    //update_table()
 }
 
-function del_event(row){
-    console.log(row)
-    update_table()
+function del_event(id){
+$('#delete-dialog-delete').attr("onclick", 'real_del_event("' + id + '")')
+$('#delete-dialog').modal('show')
+}
+
+function real_del_event(id){
+    gapi.client.load('calendar', 'v3', function () {
+        var request = gapi.client.calendar.events.delete({
+            'calendarId': calendarId,
+            'eventId': id
+        });
+        request.execute(function (resp) {
+    $('#delete-dialog').modal('hide')
+update_table()
+        });
+    });
 }
 
 function update_table(){

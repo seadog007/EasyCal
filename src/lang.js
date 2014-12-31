@@ -24,7 +24,11 @@ var mtdict = {
       "new_event-dialog-end-time": "結束時間",
       "new_event-dialog-detail": "詳細內容",
       "new_event-dialog-cancel": "取消",
-      "new_event-dialog-add": "新增事件"
+      "new_event-dialog-add": "新增事件",
+      "delete-diglog-title": "刪除事件",
+      "delete-diglog-body": "你確定要刪除這個事件嗎?",
+      "delete-diglog-cancel": "取消",
+      "delete-diglog-delete": "刪除"
     },
   "en-US":
     {
@@ -51,7 +55,11 @@ var mtdict = {
       "new_event-dialog-end-time": "End Time",
       "new_event-dialog-detail": "Detail",
       "new_event-dialog-cancel": "Cancel",
-      "new_event-dialog-add": "Add"
+      "new_event-dialog-add": "Add",
+      "delete-diglog-title": "語言包什麼的不重要啦~~~",
+      "delete-diglog-body": "語言包什麼的不重要啦~~~",
+      "delete-diglog-cancel": "語言包什麼的不重要啦~~~",
+      "delete-diglog-delete": "語言包什麼的不重要啦~~~"
     }
 };
 
