@@ -205,14 +205,17 @@ function add_new_event(){
 function edit_event(row){
 
     var eventid = $('#caltable tr td:nth-child(1)')[(row - 1)].innerHTML
-    var detail = $('#caltable tr td:nth-child(2)')[(row - 1)].innerHTML.toString()
+    var detail = $('#caltable tr td:nth-child(2)')[(row - 1)].innerHTML
+    if (detail == "undefined"){
+        detail = ""
+    }
     var allday = Number($('#caltable tr td:nth-child(3)')[(row - 1)].innerHTML)
     var start_datetime = $('#caltable tr td:nth-child(5)')[(row - 1)].innerHTML
     var end_datetime = $('#caltable tr td:nth-child(7)')[(row - 1)].innerHTML
     var summary = $('#caltable tr td:nth-child(10)')[(row - 1)].innerHTML
     start_datetime_as_date = new Date(start_datetime)
     end_datetime_as_date = new Date(end_datetime)
-    $('#editd-summary').text(summary)
+    $('#editd-summary')[0].value = summary
     $('#editd-allday')[0].checked = allday
     $('#editd-SD')[0].value = moment(start_datetime_as_date).format('YYYY-MM-DD');
     $('#editd-ED')[0].value = moment(end_datetime_as_date).format('YYYY-MM-DD');
@@ -226,13 +229,101 @@ function edit_event(row){
         $('#editd-ET')[0].style.visibility = "";
     }
     $('#editd-detail')[0].value = detail
-
+    $('#editd-submit').attr("onclick", 'real_edit_event("' + eventid + '")')
     $('#edit-dialog').modal('show')
 }
 
+function real_edit_event(id){
+
+ $('#editd-cancel')[0].disabled="disabled"
+    $('#editd-submit')[0].disabled="disabled"
+    var summary = $('#editd-summary').val()
+    var allday = $("#editd-allday")[0].checked
+    var start_date = $('#editd-SD').val()
+    var start_time = $('#editd-ST').val()
+    var end_date = $('#editd-ED').val()
+    var end_time = $('#editd-ET').val()
+    var detail = $('#editd-detail').val()
+    var start_datetime = ""
+    var end_datetime = ""
+    var needretrun = 0
+    if (!allday){
+        start_datetime = start_date + "T" + start_time + ":00" + moment().tz(cal_timezone).format('Z')
+        end_datetime = end_date + "T" + end_time + ":00" + moment().tz(cal_timezone).format('Z')
+        if (diffTime(start_datetime,end_datetime)=="Over"){
+            needretrun = 1
+        }
+    }
+    if (summary==""){
+        needretrun = 1
+    }
+    if (start_date==""){
+        needretrun = 1
+    }
+    if (end_date==""){
+        needretrun = 1
+    }
+    if (!allday && start_time==""){
+        needretrun = 1
+    }
+    if (!allday && end_time==""){
+        needretrun = 1
+    }
+    if (diffTime(start_date,end_date)=="Over"){
+        needretrun = 1
+    }
+
+
+    if (needretrun){
+
+        $('#editd-cancel')[0].disabled=""
+        $('#editd-submit')[0].disabled=""
+        return false
+
+    }else{
+
+        if (allday){
+            var req_body = {
+                'start': {
+                    'date': start_date
+                },
+                'end': {
+                    'date': end_date
+                },
+                'summary': summary,
+                'description': detail
+            }
+        }else{
+            var req_body = {
+                'start': {
+                    'dateTime': start_datetime
+                },
+                'end': {
+                    'dateTime': end_datetime
+                },
+                'summary': summary,
+                'description': detail
+            }
+        }
+
+        gapi.client.load('calendar', 'v3', function () {
+            var request = gapi.client.calendar.events.update({
+                'calendarId': calendarId,
+                'eventId': id,
+                'resource': req_body
+            });
+            request.execute(function (resp) {
+                $('#edit-dialog').modal('hide');
+                update_table()
+            });
+        });
+    }
+
+}
+
 function del_event(id){
-$('#delete-dialog-delete').attr("onclick", 'real_del_event("' + id + '")')
-$('#delete-dialog').modal('show')
+    $('#delete-dialog-delete').attr("onclick", 'real_del_event("' + id + '")')
+    $('#delete-dialog').modal('show')
 }
 
 function real_del_event(id){
@@ -242,8 +333,8 @@ function real_del_event(id){
             'eventId': id
         });
         request.execute(function (resp) {
-    $('#delete-dialog').modal('hide')
-update_table()
+            $('#delete-dialog').modal('hide')
+            update_table()
         });
     });
 }
