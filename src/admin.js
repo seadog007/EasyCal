@@ -47,6 +47,7 @@ function makeApiCall() {
     gapi.client.load('calendar', 'v3', function () {
         var request = gapi.client.calendar.events.list({
             "calendarId": calendarId,
+            "maxResults": maxResults,
             "orderBy": "startTime",
             "singleEvents": "true",
             "timeZone": "UTC"
@@ -87,7 +88,7 @@ function makeApiCall() {
                 cal_out = cal_out + "<td>" + diffTime(st, et) + "</td>"
                 cal_out = cal_out + "<td>" + diffTime(new Date(), st) + "</td>"
                 cal_out = cal_out + "<td>" + resp.items[i].summary + "</td>"
-                cal_out = cal_out + "<td>" + '<a class="action"><span class="glyphicon glyphicon-pencil"></span></a>' + "　" + '<a class="action"><span class="glyphicon glyphicon-trash"></span></a>' + "</td>"
+                cal_out = cal_out + "<td>" + '<a onclick="edit_event(' + (resp.items.length - i) + ')"><span class="glyphicon glyphicon-pencil"></span></a>' + "　" + '<a onclick="del_event(' + (resp.items.length - i) + ')"><span class="glyphicon glyphicon-trash"></span></a>' + "</td>"
                 cal_out = cal_out + "</tr>"
 
             }
@@ -102,7 +103,7 @@ function makeApiCall() {
 
 function add_new_event(){
     $('#ned-cancel')[0].disabled="disabled"
-    //$('#ned-submit')[0].disabled="disabled"
+    $('#ned-submit')[0].disabled="disabled"
     var summary = $('#ned-summary').val()
     var allday = $("#ned-fullday")[0].checked
     var start_date = $('#ned-SD').val()
@@ -132,8 +133,18 @@ function add_new_event(){
         $('#ned-cancel')[0].disabled=""
         $('#ned-submit')[0].disabled=""
         return false
+    }else{
+
     }
 
+}
+
+function edit_event(row){
+    console.log(row)
+}
+
+function del_event(row){
+    console.log(row)
 }
 
 $('#new_event-dialog').on('shown.bs.modal', function () {

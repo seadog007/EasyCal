@@ -35,6 +35,7 @@
       gapi.client.load('calendar', 'v3', function () {
         var request = gapi.client.calendar.events.list({
           "calendarId": calendarId,
+          "maxResults": maxResults,
           "orderBy": "startTime",
           "singleEvents": "true",
           "timeZone": "UTC"
