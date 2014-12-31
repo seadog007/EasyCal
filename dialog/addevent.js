@@ -28,10 +28,10 @@ var addevent = '\
 <div class="form-group">\
 <label class="col-lg-2 control-label" for="ned-SD" data-lang="new_event-dialog-start-time">開始時間</label>\
 <div class="col-lg-5">\
-<input type="date" class="form-control" id="ned-SD" placeholder="Start Date" required>\
+<input type="date" class="form-control" id="ned-SD" max="9999-12-31" placeholder="Start Date" required>\
 </div>\
 <div class="col-lg-5">\
-<input type="time" class="form-control" id="ned-ST" placeholder="Start Time"  required>\
+<input type="time" class="form-control" id="ned-ST" max="9999-12-31" placeholder="Start Time"  required>\
 </div>\
 </div>\
 <div class="form-group">\

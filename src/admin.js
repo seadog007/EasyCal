@@ -1,4 +1,4 @@
-
+var cal_timezone = ""
 //=============OAtuh 2.0=============
 
 function handleClientLoad() {
@@ -60,8 +60,9 @@ function makeApiCall() {
             .text(resp.summary);
             $("#timezone")
             .text(resp.timeZone);
-            respDebug = resp;
-            console.log(resp)
+
+            cal_timezone = resp.timeZone
+
             var cal_out = ""
             for (var i = resp.items.length - 1; i >= 0; i--) {
 
@@ -111,12 +112,12 @@ function add_new_event(){
     var end_date = $('#ned-ED').val()
     var end_time = $('#ned-ET').val()
     var detail = $('#ned-detail').val()
-    var start_datetime = start_date + "T" + start_time + ":00Z"
-    var end_datetime = end_date + "T" + end_time + ":00Z"
+    var start_datetime = ""
+    var end_datetime = ""
     var needretrun = 0
-    if (allday){
-        start_datetime = start_date + "T" + start_time + ":00Z"
-        end_datetime = end_date + "T" + end_time + ":00Z"
+    if (!allday){
+        start_datetime = start_date + "T" + start_time + ":00" + moment().tz(cal_timezone).format('Z')
+        end_datetime = end_date + "T" + end_time + ":00" + moment().tz(cal_timezone).format('Z')
         if (diffTime(start_datetime,end_datetime)=="Over"){
             needretrun = 1
         }
@@ -175,11 +176,12 @@ function add_new_event(){
 
         gapi.client.load('calendar', 'v3', function () {
             var request = gapi.client.calendar.events.insert({
-                "calendarId": calendarId,
+                'calendarId': calendarId,
                 'resource': req_body
             });
             request.execute(function (resp) {
-                console.log(resp)
+                $('#new_event-dialog').modal('hide');
+                update_table()
             });
         });
     }
@@ -189,10 +191,17 @@ function add_new_event(){
 
 function edit_event(row){
     console.log(row)
+    update_table()
 }
 
 function del_event(row){
     console.log(row)
+    update_table()
+}
+
+function update_table(){
+    $("#caltable tr").remove();
+    makeApiCall()
 }
 
 $('#new_event-dialog').on('shown.bs.modal', function () {
