@@ -1,3 +1,4 @@
+//You need to rename this file to config.js after you change the setting
 var clientId = '148169895012-fghq2veobte2tarq7pa886jenj6t477s.apps.googleusercontent.com';
 var apiKey = 'AIzaSyCsT6wgwej7DuYNHCpqRJSvF5r8pqvB2wY';
 var scopes = 'https://www.googleapis.com/auth/calendar';
