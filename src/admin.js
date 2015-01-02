@@ -98,7 +98,11 @@ function makeApiCall() {
                 cal_out = cal_out + "<td>" + eto + "</td>"
                 cal_out = cal_out + "<td>" + diffTime(st, et) + "</td>"
                 cal_out = cal_out + "<td>" + diffTime(new Date(), st) + "</td>"
-                cal_out = cal_out + "<td>" + resp.items[i].summary + "</td>"
+                if (resp.items[i].description != undefined){
+                    cal_out = cal_out + '<td><a onclick="detailshow(\'' + encodeURI(newline_en(resp.items[i].description)) + '\')">' + resp.items[i].summary + '</a></td>'
+                }else{
+                    cal_out = cal_out + '<td>' + resp.items[i].summary + '</td>'
+                }
                 cal_out = cal_out + "<td>" + '<a onclick="edit_event(' + (resp.items.length - i) + ')"><span class="glyphicon glyphicon-pencil"></span></a>' + "　" + '<a onclick="del_event(\'' + resp.items[i].id + '\')"><span class="glyphicon glyphicon-trash"></span></a>' + "</td>"
                 cal_out = cal_out + "</tr>"
 

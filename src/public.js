@@ -73,7 +73,11 @@ function makeApiCall() {
                 cal_out = cal_out + "<td>" + endtime + "</td>"
                 cal_out = cal_out + "<td>" + diffTime(st, et) + "</td>"
                 cal_out = cal_out + "<td>" + diffTime(new Date(), st) + "</td>"
-                cal_out = cal_out + "<td>" + resp.items[i].summary + "</td>"
+                if (resp.items[i].description != undefined){
+                    cal_out = cal_out + '<td><a onclick="detailshow(\'' + encodeURI(newline_en(resp.items[i].description)) + '\')">' + resp.items[i].summary + '</a></td>'
+                }else{
+                    cal_out = cal_out + '<td>' + resp.items[i].summary + '</td>'
+                }
                 cal_out = cal_out + "</tr>"
             }
             $('#caltable').append(cal_out)

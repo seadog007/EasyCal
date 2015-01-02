@@ -48,7 +48,9 @@ var mtdict = {
         "hours": "小時",
         "hour": "小時",
         "mins": "分",
-        "min": "分"
+        "min": "分",
+        "detail-dialog-title": "詳細內容",
+        "detail-dialog-ok": "確定"
     },
     "en-US":
         {
@@ -99,8 +101,9 @@ var mtdict = {
         "hour": "hour",
         "hours": "hours",
         "min": "min",
-        "mins": "mins"
-
+        "mins": "mins",
+        "detail-dialog-title": "Need help",
+        "detail-dialog-ok": "OK"
     }
 };
 
