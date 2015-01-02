@@ -7,20 +7,17 @@
     var mins = Math.floor((totalSecs - days * 24 * 3600 - hours * 3600) / 60);
     var secs = Math.floor((totalSecs - days * 24 * 3600 - hours * 3600 - mins * 60));
     if (totalSecs < 0){
-        return "Over"
+        return 'Over'
     }
-    var ret = ""
+    var ret = ''
     if (days != 0) {
-      ret = ret + days + "days  "
+      ret = ret + days + '<span data-lang="day">days</span>  '
     }
     if (hours != 0) {
-      ret = ret + hours + "hours  "
+      ret = ret + hours + '<span data-lang="hour">hours</span>  '
     }
     if (mins != 0) {
-      ret = ret + mins + "mins  "
-    }
-    if (secs != 0) {
-      ret = ret + secs + "secs  "
+      ret = ret + mins + '<span data-lang="min">mins</span>  '
     }
     return ret
   }
