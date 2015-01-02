@@ -20,7 +20,7 @@ function diffTime(startTime_s,endTime_s) {
     if (hours != 0 && hours > 1){
         ret = ret + hours + '<span data-lang="hours">hours</span>  '
     }
-    if (hours != 0 && days == 1){
+    if (hours != 0 && hours == 1){
         ret = ret + hours + '<span data-lang="hour">hour</span>  '
     }
 
