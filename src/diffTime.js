@@ -1,4 +1,4 @@
- function diffTime(startTime_s,endTime_s) {
+function diffTime(startTime_s,endTime_s) {
     var startTime = (new Date(startTime_s)).getTime();
     var endTime =  (new Date(endTime_s)).getTime()
     var totalSecs = (endTime - startTime) / 1000;
@@ -10,16 +10,28 @@
         return 'Over'
     }
     var ret = ''
-    if (days != 0) {
-      ret = ret + days + '<span data-lang="day">days</span>  '
+    if (days != 0 && days > 1){
+        ret = ret + days + '<span data-lang="days">days</span>  '
     }
-    if (hours != 0) {
-      ret = ret + hours + '<span data-lang="hour">hours</span>  '
+    if (days != 0 && days == 1){
+        ret = ret + days + '<span data-lang="day">day</span>  '
     }
-    if (mins != 0) {
-      ret = ret + mins + '<span data-lang="min">mins</span>  '
+
+    if (hours != 0 && hours > 1){
+        ret = ret + hours + '<span data-lang="hours">hours</span>  '
     }
+    if (hours != 0 && days == 1){
+        ret = ret + hours + '<span data-lang="hour">hour</span>  '
+    }
+
+    if (mins != 0 && mins > 1){
+        ret = ret + mins + '<span data-lang="mins">mins</span>  '
+    }
+    if (mins != 0 && mins == 1){
+        ret = ret + mins + '<span data-lang="min">min</span>  '
+    }
+
     return ret
-  }
+}
 
 

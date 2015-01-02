@@ -112,6 +112,7 @@ function makeApiCall() {
             $('#caltable tr td:nth-child(7)').css('display','none');
         });
     });
+    switchLang(lang)
 }
 //=============執行 Api 呼叫=============
 

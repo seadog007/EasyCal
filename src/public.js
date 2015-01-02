@@ -80,6 +80,7 @@
             .append(cal_out)
         });
       });
+    switchLang(lang)
     }
     //=============執行 Api 呼叫=============
 

@@ -42,7 +42,13 @@ var mtdict = {
         "delete-diglog-cancel": "取消",
         "delete-diglog-delete": "刪除",
         "edit-dialog-title": "編輯事件",
-        "edit-dialog-time-msg": "以下時間使用該日曆時區"
+        "edit-dialog-time-msg": "以下時間使用該日曆時區",
+        "days": "天",
+        "day": "天",
+        "hours": "小時",
+        "hour": "小時",
+        "mins": "分",
+        "min": "分"
     },
     "en-US":
         {
@@ -87,7 +93,14 @@ var mtdict = {
         "delete-diglog-cancel": "Cancel",
         "delete-diglog-delete": "Confirm",
         "edit-dialog-title": "Edit this event",
-        "edit-dialog-time-msg": "The timezone of the calender is used with the time below."
+        "edit-dialog-time-msg": "The timezone of the calender is used with the time below.",
+        "day": "day",
+        "days": "days",
+        "hour": "hour",
+        "hours": "hours",
+        "min": "min",
+        "mins": "mins"
+
     }
 };
 
