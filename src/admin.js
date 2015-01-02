@@ -110,9 +110,9 @@ function makeApiCall() {
             $('#caltable tr td:nth-child(3)').css('display','none');
             $('#caltable tr td:nth-child(5)').css('display','none');
             $('#caltable tr td:nth-child(7)').css('display','none');
+            switchLang(lang)
         });
     });
-    switchLang(lang)
 }
 //=============執行 Api 呼叫=============
 
@@ -236,7 +236,7 @@ function edit_event(row){
 
 function real_edit_event(id){
 
- $('#editd-cancel')[0].disabled="disabled"
+    $('#editd-cancel')[0].disabled="disabled"
     $('#editd-submit')[0].disabled="disabled"
     var summary = $('#editd-summary').val()
     var allday = $("#editd-allday")[0].checked
