@@ -235,6 +235,8 @@ function edit_event(row){
     }
     $('#editd-detail')[0].value = detail
     $('#editd-submit').attr("onclick", 'real_edit_event("' + eventid + '")')
+    $('#editd-cancel')[0].disabled=""
+    $('#editd-submit')[0].disabled=""
     $('#edit-dialog').modal('show')
 }
 
