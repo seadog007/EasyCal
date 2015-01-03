@@ -209,15 +209,15 @@ function add_new_event(){
 
 function edit_event(row){
 
-    var eventid = $('#caltable tr td:nth-child(1)')[(row - 1)].innerHTML
-    var detail = $('#caltable tr td:nth-child(2)')[(row - 1)].innerHTML
+    var eventid = $('#caltable tr td:nth-child(1)')[(row - 1)].innerText
+    var detail = $('#caltable tr td:nth-child(2)')[(row - 1)].innerText
     if (detail == "undefined"){
         detail = ""
     }
-    var allday = Number($('#caltable tr td:nth-child(3)')[(row - 1)].innerHTML)
-    var start_datetime = $('#caltable tr td:nth-child(5)')[(row - 1)].innerHTML
-    var end_datetime = $('#caltable tr td:nth-child(7)')[(row - 1)].innerHTML
-    var summary = $('#caltable tr td:nth-child(10)')[(row - 1)].innerHTML
+    var allday = Number($('#caltable tr td:nth-child(3)')[(row - 1)].innerText)
+    var start_datetime = $('#caltable tr td:nth-child(5)')[(row - 1)].innerText
+    var end_datetime = $('#caltable tr td:nth-child(7)')[(row - 1)].innerText
+    var summary = $('#caltable tr td:nth-child(10)')[(row - 1)].innerText
     start_datetime_as_date = new Date(start_datetime)
     end_datetime_as_date = new Date(end_datetime)
     $('#editd-summary')[0].value = summary
